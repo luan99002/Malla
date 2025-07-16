@@ -1,74 +1,23 @@
 body {
   font-family: Arial, sans-serif;
-  background: #f9f7fc;
-  color: #333;
-  margin: 0;
+  background: #fff;
+  text-align: center;
   padding: 20px;
 }
 
 h1 {
-  text-align: center;
-  color: #6a1b9a;
+  color: #c2185b;
+}
+
+.malla {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
 .ciclo {
-  margin: 30px 0;
-  padding: 20px;
-  border-left: 5px solid #ab47bc;
-  background: #f3e5f5;
-  border-radius: 8px;
-}
-
-.ciclo h2 {
-  margin-top: 0;
-  color: #6a1b9a;
-}
-
-.curso {
-  display: flex;
-  align-items: center;
-  margin: 8px 0;
+  border: 2px solid #f48fb1;
+  border-radius: 10px;
   padding: 10px;
-  border: 1px solid #ce93d8;
-  border-radius: 6px;
-  background: #fff;
-  transition: 0.3s;
-}
-
-.curso input[type="checkbox"] {
-  margin-right: 12px;
-}
-
-.curso.bloqueado {
-  opacity: 0.4;
-  background: #ede7f6;
-  pointer-events: none;
-}
-
-.curso.completado {
-  background: #e1bee7;
-  border-color: #ba68c8;
-}
-
-.curso:hover {
-  background: #f3e5f5;
-}
-
-input[type="checkbox"]:disabled {
-  cursor: not-allowed;
-}
-
-button {
-  margin: 20px auto;
-  display: block;
-  padding: 10px 20px;
-  background: #8e24aa;
-  border: none;
-  color: #fff;
-  border-radius: 4px;
-  cursor: pointer;
-}
-
-button:hover {
-  background: #6a1b9a;
-}
+ 
