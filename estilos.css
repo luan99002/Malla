@@ -21,10 +21,15 @@ h1 {
   box-shadow: 0 0 10px #d8cbe7;
 }
 
-.ciclo h2 {
-  color: #5d3c80;
-  margin-bottom: 10px;
+.ciclo-header {
+  background-color: #d1b3ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 15px;
   text-align: center;
+  font-weight: bold;
+  font-size: 18px;
+  color: #4b2c72;
 }
 
 .cursos {
@@ -49,7 +54,7 @@ h1 {
 }
 
 .curso.completado {
-  background-color: #d8b4f8 !important; /* lila suave al marcar */
+  background-color: #d8b4f8 !important;
   border-color: #a574e8;
 }
 
