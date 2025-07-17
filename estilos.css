@@ -1,70 +1,72 @@
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f4f2f8;
   margin: 0;
   padding: 0;
+  background-color: #f7f3fb;
   color: #333;
 }
 
 h1 {
   text-align: center;
-  padding: 1rem;
-  color: #5d3c80;
+  padding: 20px;
+  background-color: #6d42c7;
+  color: white;
+  margin: 0;
 }
 
 .ciclo {
-  margin: 30px auto;
-  max-width: 1000px;
-  background-color: #e8dff5;
-  padding: 15px;
-  border-radius: 12px;
-  box-shadow: 0 0 10px #d8cbe7;
-}
-
-.ciclo-header {
-  background-color: #d1b3ff;
-  padding: 10px;
-  border-radius: 10px;
-  margin-bottom: 15px;
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  color: #4b2c72;
-}
-
-.cursos {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 15px;
+  padding: 20px;
+  max-width: 1000px;
+  margin: 0 auto 40px auto;
+  background-color: #f0e6fa;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.ciclo-titulo {
+  grid-column: 1 / -1;
+  background-color: #bca1f7;
+  padding: 10px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 12px;
+  color: #3f256b;
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }
 
 .curso {
-  background-color: #f7f1fc;
-  border: 2px solid #c6a9e3;
-  border-radius: 10px;
+  background-color: #e9d9fc;
+  border-radius: 12px;
   padding: 10px;
-  text-align: center;
-  transition: 0.3s;
-  font-size: 14px;
-}
-
-.curso.bloqueado {
-  opacity: 0.5;
-  pointer-events: none;
-}
-
-.curso.completado {
-  background-color: #d8b4f8 !important;
-  border-color: #a574e8;
+  border: 2px solid #d3bdf3;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
 }
 
 .curso input[type="checkbox"] {
-  margin-top: 5px;
-  accent-color: #a574e8;
+  margin-top: 10px;
+  transform: scale(1.2);
 }
 
-@media (max-width: 768px) {
-  .cursos {
-    grid-template-columns: repeat(2, 1fr);
-  }
+.curso.completado {
+  background-color: #d3c4ff;
+  border-color: #a88ff1;
+  opacity: 0.9;
+}
+
+.curso.bloqueado {
+  opacity: 0.4;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  font-size: 0.9em;
+  color: #777;
 }
