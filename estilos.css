@@ -1,144 +1,77 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Malla de Medicina</title>
-  <style>
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #fef9ff;
-      margin: 0;
-      padding: 20px;
-      text-align: center;
-    }
-    h1 {
-      color: #9c27b0;
-    }
-    .container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 20px;
-    }
-    .ciclo {
-      background-color: #ffe6fb;
-      border: 2px solid #f2b5f0;
-      border-radius: 10px;
-      padding: 10px 15px;
-      width: 220px;
-    }
-    .ciclo h2 {
-      background-color: #d48bd3;
-      color: white;
-      padding: 8px 0;
-      border-radius: 8px;
-      margin-top: 0;
-    }
-    .curso {
-      background-color: #e1b6eb;
-      margin: 8px 0;
-      padding: 10px;
-      border-radius: 8px;
-      color: white;
-      font-size: 14px;
-      text-align: left;
-      position: relative;
-      transition: background-color 0.3s ease;
-    }
-    .curso input[type="checkbox"] {
-      position: absolute;
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .curso.completed {
-      background-color: #c760dc;
-    }
-    .curso.locked {
-      opacity: 0.5;
-      pointer-events: none;
-    }
-  </style>
-</head>
-<body>
-  <h1>Malla de Medicina UPAO</h1>
-  <div class="container">
-    <!-- Aquí irán los ciclos y cursos dinámicamente -->
-  </div>
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff0f5;
+  margin: 0;
+  padding: 2rem;
+  color: #4a0262;
+}
 
-  <script>
-    const cursos = [
-      { id: 'anatomia', nombre: 'Anatomía Humana', ciclo: 1, req: [] },
-      { id: 'bioquimica', nombre: 'Bioquímica', ciclo: 1, req: [] },
-      { id: 'fisiologia', nombre: 'Fisiología', ciclo: 2, req: ['bioquimica'] },
-      { id: 'histologia', nombre: 'Histología', ciclo: 2, req: ['anatomia'] },
-      { id: 'patologia', nombre: 'Patología', ciclo: 3, req: ['histologia'] },
-      { id: 'farmacologia', nombre: 'Farmacología', ciclo: 3, req: ['bioquimica', 'fisiologia'] },
-      // Puedes seguir añadiendo más cursos
-    ];
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+  color: #b30086;
+}
 
-    const contenedor = document.querySelector('.container');
-    const ciclos = {};
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+}
 
-    cursos.forEach(curso => {
-      if (!ciclos[curso.ciclo]) {
-        const div = document.createElement('div');
-        div.className = 'ciclo';
-        div.innerHTML = `<h2>Ciclo ${curso.ciclo}</h2>`;
-        ciclos[curso.ciclo] = div;
-        contenedor.appendChild(div);
-      }
+.cycle {
+  background-color: #ffe6f2;
+  border: 2px solid #ff80bf;
+  border-radius: 15px;
+  width: 250px;
+  padding: 1rem;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+}
 
-      const divCurso = document.createElement('div');
-      divCurso.className = 'curso';
-      divCurso.dataset.id = curso.id;
-      divCurso.dataset.req = curso.req.join(',');
+.cycle h2 {
+  background-color: #ff66b2;
+  color: white;
+  text-align: center;
+  border-radius: 10px;
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+}
 
-      const checked = localStorage.getItem(curso.id) === 'true';
-      const checkbox = document.createElement('input');
-      checkbox.type = 'checkbox';
-      checkbox.checked = checked;
+.course {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.7rem;
+  background-color: #fce6f9;
+  border: 2px solid #f8b8e0;
+  padding: 0.5rem;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
 
-      if (checked) divCurso.classList.add('completed');
+.course.locked {
+  background-color: #f9d6ec;
+  opacity: 0.6;
+  pointer-events: none;
+}
 
-      checkbox.addEventListener('change', () => {
-        const estado = checkbox.checked;
-        localStorage.setItem(curso.id, estado);
-        actualizarEstado();
-      });
+.course.unlocked {
+  background-color: #d99ce0;
+  pointer-events: auto;
+}
 
-      divCurso.appendChild(checkbox);
-      divCurso.append(" ", curso.nombre);
-      ciclos[curso.ciclo].appendChild(divCurso);
-    });
+.course.completed {
+  background-color: #cc66b8 !important;
+  color: white;
+}
 
-    function actualizarEstado() {
-      cursos.forEach(curso => {
-        const el = document.querySelector(`[data-id="${curso.id}"]`);
-        const completed = localStorage.getItem(curso.id) === 'true';
-        if (completed) {
-          el.classList.add('completed');
-        } else {
-          el.classList.remove('completed');
-        }
-      });
+.course input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #cc33a0;
+}
 
-      cursos.forEach(curso => {
-        const el = document.querySelector(`[data-id="${curso.id}"]`);
-        const requisitos = curso.req;
-        const habilitado = requisitos.every(req => localStorage.getItem(req) === 'true');
-        if (!habilitado) {
-          el.classList.add('locked');
-          el.querySelector('input').disabled = true;
-        } else {
-          el.classList.remove('locked');
-          el.querySelector('input').disabled = false;
-        }
-      });
-    }
-
-    actualizarEstado();
-  </script>
-</body>
-</html>
+.course label {
+  flex: 1;
+  cursor: pointer;
+  user-select: none;
+}
