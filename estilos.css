@@ -1,87 +1,56 @@
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f9f8fc;
-  color: #333;
-  margin: 0;
+#ciclos-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columnas */
+  gap: 20px;
   padding: 20px;
 }
 
-h1 {
-  text-align: center;
-  color: #6a1b9a;
-  margin-bottom: 30px;
-}
-
-.malla {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 20px;
-  justify-content: center;
-  max-width: 100%;
-  margin: 0 auto;
-}
-
+/* Estilo para cada ciclo */
 .ciclo {
-  background-color: #ede7f6;
-  border: 2px solid #ce93d8;
+  background-color: #e9d6f2; /* lila suave */
   border-radius: 12px;
-  padding: 15px;
-  box-shadow: 2px 2px 10px rgba(0,0,0,0.05);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  height: fit-content;
+  padding: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Encabezado del ciclo */
 .ciclo h2 {
-  background-color: #ba68c8;
+  background-color: #c18edb; /* morado más fuerte */
   color: white;
-  margin: -15px -15px 10px -15px;
+  margin: 0 -12px 12px;
   padding: 10px;
-  border-radius: 10px 10px 0 0;
   text-align: center;
-  font-size: 1.1rem;
+  border-radius: 12px 12px 0 0;
+  font-size: 1.1em;
 }
 
+/* Curso individual */
 .curso {
-  background-color: #f3e5f5;
-  border: 1px solid #d1c4e9;
-  border-radius: 10px;
-  padding: 8px 12px;
+  background-color: #f8f0fc;
+  border: 1px solid #d6a8ec;
+  border-radius: 8px;
+  padding: 8px;
+  margin: 6px 0;
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.95rem;
-  transition: background-color 0.3s;
+  justify-content: space-between;
+  font-size: 0.95em;
+  color: #333;
+}
+
+/* Curso completado */
+.curso.completado {
+  background-color: #d7c5f2;
+  text-decoration: line-through;
+  opacity: 0.7;
+}
+
+/* Curso bloqueado */
+.curso.bloqueado {
+  background-color: #f0e3f8;
+  opacity: 0.6;
 }
 
 .curso input[type="checkbox"] {
-  accent-color: #7b1fa2;
-}
-
-.curso.completado {
-  background-color: #ce93d8;
-  color: white;
-}
-
-.curso.bloqueado {
-  opacity: 0.4;
-}
-
-@media (max-width: 1024px) {
-  .malla {
-    grid-template-columns: repeat(3, 1fr);
-  }
-}
-
-@media (max-width: 768px) {
-  .malla {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .malla {
-    grid-template-columns: 1fr;
-  }
+  transform: scale(1.2);
 }
